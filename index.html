@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Japan Flights 2027</title>
+<meta name="description" content="Brisbane and Melbourne to Tokyo or Osaka, ten days, late January 2027.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<style>
+@font-face{font-family:"Antonio";src:url("assets/fonts/Antonio-100-700.woff2") format("woff2");font-weight:100 700;font-display:swap}
+@font-face{font-family:"Poppins";src:url("assets/fonts/Poppins-300.woff2") format("woff2");font-weight:300;font-display:swap}
+@font-face{font-family:"Poppins";src:url("assets/fonts/Poppins-400.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Poppins";src:url("assets/fonts/Poppins-500.woff2") format("woff2");font-weight:500;font-display:swap}
+
+/* Sail share chassis: the Captain Nino palette, stone and sand on ink. */
+:root{
+  color-scheme:dark;
+  --cn-ink:#1f221e; --cn-stone:#9e9a97; --cn-taupe:#897c6c; --cn-sand:#c3b9af;
+  --ink:#eeeae5; --ink-2:#c3b9af; --ink-3:#b5b0ac; --ink-4:#a7a4a0; --ink-on-light:#1f221e;
+  --hairline:rgb(158 154 151 / .24); --focus-ring:rgb(195 185 175 / .85);
+  --ground:#1f221e;
+  --font-display:"Antonio","Arial Narrow","Helvetica Neue",sans-serif;
+  --font-ui:"Poppins",-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",Roboto,Arial,sans-serif;
+  --radius:3px; --gutter:16px;
+  --safe-top:env(safe-area-inset-top,0px); --safe-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--ground);-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100svh;font-family:var(--font-ui);font-size:16px;line-height:1.55;color:var(--ink);background:var(--ground);-webkit-font-smoothing:antialiased;overflow-x:hidden;overflow-wrap:break-word}
+::selection{background:rgb(137 124 108 / .55);color:#fff}
+:focus-visible{outline:2px solid var(--focus-ring);outline-offset:3px}
+a{color:inherit}
+
+/* The photograph behind everything. */
+.backdrop{position:fixed;inset:0;z-index:0;overflow:hidden;background:linear-gradient(180deg,#2a2d28 0%,#1f221e 46%,#151714 100%)}
+.backdrop img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 30%}
+.backdrop__veil{position:absolute;inset:0;background:linear-gradient(180deg,rgb(20 22 19 / .34) 0%,rgb(20 22 19 / .08) 26%,rgb(20 22 19 / .5) 62%,rgb(20 22 19 / .86) 100%)}
+
+.glass{position:relative;border-radius:var(--radius);color:var(--ink);
+  background:linear-gradient(180deg,rgb(31 34 30 / .88) 0%,rgb(31 34 30 / .92) 100%);
+  box-shadow:inset 0 0 0 1px rgb(158 154 151 / .22),0 28px 60px -30px rgb(8 10 8 / .7),0 2px 8px rgb(8 10 8 / .16);
+  -webkit-backdrop-filter:blur(16px) saturate(120%);backdrop-filter:blur(16px) saturate(120%)}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.glass{background:rgb(31 34 30 / .95)}}
+
+.eyebrow,.label{margin:0;font-size:12px;font-weight:400;letter-spacing:.01em;line-height:1.3;color:var(--ink-3)}
+.display{margin:12px 0 0;font-family:var(--font-display);font-weight:400;font-size:clamp(30px,8.6vw,40px);line-height:.96;letter-spacing:.01em;text-transform:uppercase;text-wrap:balance}
+.lede{margin:14px 0 0;font-size:18px;font-weight:300;line-height:1.45;color:var(--ink-2)}
+.text{margin:10px 0 0;color:var(--ink-2)}
+.hint{margin:8px 0 0;font-size:13px;color:var(--ink-4)}
+
+.page{position:relative;z-index:1}
+.hero{position:relative;display:flex;align-items:flex-end;min-height:82svh;max-width:760px;margin:0 auto;padding:calc(var(--safe-top) + 64px) var(--gutter) 44px}
+.hero::before{content:"";position:absolute;top:calc(var(--safe-top) + 22px);left:var(--gutter);width:22px;height:22px;background-color:var(--ink);
+  -webkit-mask:url("assets/brand/monogram-cn.svg") center/contain no-repeat;mask:url("assets/brand/monogram-cn.svg") center/contain no-repeat;filter:drop-shadow(0 1px 2px rgb(14 16 13 / .5))}
+.hero__text{width:100%;text-shadow:0 1px 2px rgb(14 16 13 / .5),0 0 28px rgb(14 16 13 / .35)}
+.hero .eyebrow{color:var(--ink)}
+.hero__island{margin:10px 0 0;font-family:var(--font-display);font-weight:400;font-size:clamp(64px,21vw,150px);line-height:.9;letter-spacing:.005em;text-transform:uppercase}
+.hero__project{margin:18px 0 0;padding-top:14px;border-top:1px solid rgb(238 234 229 / .4);font-size:clamp(18px,5vw,22px);font-weight:400;line-height:1.3}
+.hero__meta{margin:6px 0 0;font-size:13px;color:var(--ink-2)}
+
+.sections{position:relative;display:grid;gap:18px;max-width:760px;margin:0 auto;padding:0 var(--gutter) calc(40px + var(--safe-bottom))}
+.panel{min-width:0;padding:26px 22px 22px}
+
+.lines{margin:18px 0 0;padding:0;list-style:none}
+.lines > li{padding:14px 0;border-top:1px solid var(--hairline)}
+.lines > li:last-child{border-bottom:1px solid var(--hairline)}
+
+/* The three plans. */
+.plan{display:grid;grid-template-columns:1fr auto;gap:2px 16px;align-items:baseline}
+.plan__name{font-size:12px;color:var(--ink-3)}
+.plan__title{grid-column:1;font-size:17px;font-weight:500;margin:2px 0 0}
+.plan__sum{grid-column:2;grid-row:1 / span 2;font-family:var(--font-display);font-size:40px;line-height:1;letter-spacing:.01em;text-align:right}
+.plan__sum small{display:block;font-family:var(--font-ui);font-size:12px;color:var(--ink-3);letter-spacing:.01em}
+.plan__detail{grid-column:1 / -1;margin:6px 0 0;color:var(--ink-2);font-size:15px}
+
+/* Quiet controls: a chosen thing is shown with light, never a box. */
+.filters{display:grid;gap:14px;margin-top:18px}
+.filter{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 18px}
+.filter .label{width:52px}
+.filter button{border:0;background:none;padding:4px 0;font:inherit;font-size:15px;color:var(--ink-4);cursor:pointer;border-bottom:1px solid transparent;-webkit-tap-highlight-color:transparent}
+.filter button:hover{color:var(--ink-2)}
+.filter button[aria-pressed="true"]{color:var(--ink);border-bottom-color:rgb(238 234 229 / .6)}
+.count{margin:18px 0 0;font-size:12px;color:var(--ink-3)}
+
+.flight{display:grid;grid-template-columns:84px 1fr auto;gap:2px 16px;align-items:baseline}
+.flight__price{font-family:var(--font-display);font-size:30px;line-height:1;letter-spacing:.01em}
+.flight__main{min-width:0}
+.flight__line{font-size:15px}
+.flight__line b{font-weight:500}
+.flight__sub{font-size:13px;color:var(--ink-3)}
+.flight__note{font-size:12px;color:var(--cn-sand);margin-top:2px}
+.open{font-size:13px;color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--hairline);padding-bottom:1px;white-space:nowrap}
+.open:hover{color:var(--ink);border-bottom-color:var(--ink-2)}
+@media (max-width:560px){
+  .flight{grid-template-columns:1fr auto}
+  .flight__price{grid-column:1}
+  .flight .open{grid-column:2;grid-row:1}
+  .flight__main{grid-column:1 / -1;margin-top:6px}
+}
+
+/* Fields and the action, as Sail writes them. */
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px;margin-top:18px}
+.field .label{display:block;margin-bottom:6px}
+.field select,.field input{width:100%;min-height:44px;padding:0 12px;border:0;border-radius:2px;font:inherit;font-size:15px;color:var(--ink);background:rgb(195 185 175 / .08);box-shadow:inset 0 0 0 1px var(--hairline);color-scheme:dark}
+.field select option{background:var(--cn-ink)}
+.check{display:flex;align-items:center;gap:10px;font-size:15px;color:var(--ink-2);grid-column:1 / -1;cursor:pointer}
+.check input{accent-color:var(--cn-sand);width:16px;height:16px}
+.action{display:flex;align-items:center;justify-content:center;min-height:50px;margin-top:18px;padding:0 22px;border-radius:2px;font-size:15px;font-weight:500;letter-spacing:.02em;color:var(--ink-on-light);background:#eeeae5;text-decoration:none;box-shadow:0 12px 26px -16px rgb(8 10 8 / .7)}
+.action:hover{background:#fff}
+.action--quiet{background:none;color:var(--ink);box-shadow:inset 0 0 0 1px rgb(158 154 151 / .4)}
+.action--quiet:hover{background:rgb(195 185 175 / .08)}
+.actions{display:flex;gap:12px;flex-wrap:wrap}
+.actions .action{flex:1 1 220px}
+
+.frame{position:relative;margin:18px 0 0;border-radius:2px;overflow:hidden;aspect-ratio:3 / 2;background:rgb(195 185 175 / .07)}
+.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+.figure{font-family:var(--font-display);font-size:clamp(72px,20vw,112px);line-height:.9;letter-spacing:.005em;margin:18px 0 0}
+.figure small{font-family:var(--font-ui);font-size:13px;color:var(--ink-3);letter-spacing:.01em;margin-left:8px}
+
+.sign{display:flex;flex-direction:column;align-items:center;gap:10px;padding:34px 0 10px}
+.sign span{display:block;width:150px;height:30px;background-color:var(--ink-2);-webkit-mask:url("assets/brand/wordmark.svg") center/contain no-repeat;mask:url("assets/brand/wordmark.svg") center/contain no-repeat}
+.sign p{margin:0;font-size:12px;color:var(--ink-4)}
+</style>
+</head>
+<body>
+<div class="backdrop" aria-hidden="true"><img src="assets/pagoda.jpg" alt=""><div class="backdrop__veil"></div></div>
+
+<main class="page">
+  <header class="hero">
+    <div class="hero__text">
+      <p class="eyebrow">For Jacob and Damo</p>
+      <h1 class="hero__island">Japan</h1>
+      <p class="hero__project">Ten days in Tokyo or Osaka. Late January 2027 first, later in the year if that suits, and Shanghai as the wildcard.</p>
+      <p class="hero__meta">Jacob from Brisbane, Damo from Melbourne. Prices from Google Flights on 11 Oct 2026, return economy per person in AUD. They will move.</p>
+    </div>
+  </header>
+
+  <div class="sections">
+
+    <section class="glass panel">
+      <p class="eyebrow">The short version</p>
+      <h2 class="display">Leave Australia Day</h2>
+      <p class="lede">26 January came out cheapest across the board. Fly into Tokyo, each from your own city, and catch the shinkansen to Osaka during the trip.</p>
+      <ul class="lines">
+        <li class="plan">
+          <span class="plan__name">Cheapest, still sensible</span>
+          <span class="plan__sum">$2,949<small>for both</small></span>
+          <span class="plan__title">Jetstar, leave Tue 26 Jan, back Fri 5 Feb</span>
+          <p class="plan__detail">Jacob non-stop Brisbane to Narita, $1,516. Damo via Cairns, $1,433. Bags are extra on Jetstar, roughly $100 to $200 return each.</p>
+        </li>
+        <li class="plan">
+          <span class="plan__name">Most comfortable</span>
+          <span class="plan__sum">~$4,800<small>for both</small></span>
+          <span class="plan__title">Both on non-stops</span>
+          <p class="plan__detail">Jacob on Qantas from Brisbane, $2,322. Damo on Qantas or JAL from Melbourne, about $2,100 to $2,500. Bags and meals in, about nine to ten hours.</p>
+        </li>
+        <li class="plan">
+          <span class="plan__name">Fly together</span>
+          <span class="plan__sum">~$2,800<small>for both</small></span>
+          <span class="plan__title">Meet in Cairns</span>
+          <p class="plan__detail">Jacob leaves Brisbane 6:40am ($1,336 to $1,381), Damo leaves Melbourne 6:15am ($1,433 to $1,525). Both land at Narita at 6:10pm, so most likely the same plane from Cairns. Check the flight numbers before booking.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="glass panel">
+      <p class="eyebrow">Later in 2027</p>
+      <h2 class="display">Cheaper if you can wait</h2>
+      <p class="lede">The same trip drops to about $1,000 to $1,300 each from March. These skip late April and Japan's Golden Week (29 April to 5 May), when prices spike.</p>
+      <ul class="lines">
+        <li class="plan">
+          <span class="plan__name">Best weather</span>
+          <span class="plan__sum">$2,405<small>for both</small></span>
+          <span class="plan__title">Late May, Tue 18 to Fri 28 May</span>
+          <p class="plan__detail">Jacob on Jetstar non-stop, $1,108. Damo on Cathay via Hong Kong, $1,297, or Qantas non-stop for $1,968. Warm, dry and past the holiday crowds.</p>
+        </li>
+        <li class="plan">
+          <span class="plan__name">Cheapest month</span>
+          <span class="plan__sum">$2,585<small>both non-stop</small></span>
+          <span class="plan__title">Early June, Tue 8 to Fri 18 June</span>
+          <p class="plan__detail">Jacob on Jetstar non-stop, $1,006. Damo on Qantas non-stop, $1,579, the cheapest Qantas fare we found all year. The catch is the start of Tokyo's rainy season.</p>
+        </li>
+        <li class="plan">
+          <span class="plan__name">Early blossom</span>
+          <span class="plan__sum">$2,315<small>for both</small></span>
+          <span class="plan__title">Mid March, Tue 16 to Fri 26 March</span>
+          <p class="plan__detail">Jacob on Jetstar non-stop, $1,265. Damo on Jetstar via Cairns, $1,050. Cherry blossom usually starts in Tokyo in the last week of March, so a few days later catches more of it and costs more.</p>
+        </li>
+      </ul>
+      <p class="hint">September onwards isn't on sale yet. Airlines open about 11 months out, so check again in the new year.</p>
+    </section>
+
+    <section class="glass panel">
+      <p class="eyebrow">China instead?</p>
+      <h2 class="display">Shanghai for less</h2>
+      <p class="figure">$878<small>Jacob, Brisbane to Shanghai, May 2027</small></p>
+      <p class="text">China is the cheapest option we found. In late May, Jacob flies China Southern via Guangzhou for $878 and Damo flies Cathay via Hong Kong for $1,003. That's $1,881 for both, about $500 under Japan the same week. Late January is $1,261 and $1,077.</p>
+      <ul class="lines">
+        <li>The visa is the catch. Australians get 30 days visa free, but it's only confirmed to 31 December 2026. China has extended it every November so far. Check before booking anything for 2027.</li>
+        <li>Late January runs into the Chinese New Year rush (New Year's Day is Sat 6 February 2027), so trains and hotels are packed. May is the better China trip.</li>
+        <li>Set up Alipay and WeChat Pay with your own card before you leave, and get a travel eSIM so Google and Instagram still work.</li>
+        <li>There are non-stops (China Eastern from Brisbane, several airlines from Melbourne), but they didn't show at a good price in these searches.</li>
+      </ul>
+    </section>
+
+    <section class="glass panel">
+      <p class="eyebrow">Every option worth a look</p>
+      <h2 class="display">The flights</h2>
+      <p class="text">No layovers over about six hours. Each one opens that exact search in Google Flights, dates filled in, ten days return.</p>
+      <div class="filters">
+        <div class="filter" data-f="who"><span class="label">Who</span>
+          <button aria-pressed="true" data-v="all">Both</button><button aria-pressed="false" data-v="BNE">Jacob</button><button aria-pressed="false" data-v="MEL">Damo</button></div>
+        <div class="filter" data-f="month"><span class="label">When</span>
+          <button aria-pressed="true" data-v="Jan">January</button><button aria-pressed="false" data-v="Dec">December</button><button aria-pressed="false" data-v="later">Later 2027</button><button aria-pressed="false" data-v="all">Any</button></div>
+        <div class="filter" data-f="dest"><span class="label">To</span>
+          <button aria-pressed="true" data-v="all">Anywhere</button><button aria-pressed="false" data-v="Tokyo">Tokyo</button><button aria-pressed="false" data-v="Osaka">Osaka</button><button aria-pressed="false" data-v="Shanghai">Shanghai</button></div>
+        <div class="filter" data-f="stops"><span class="label">Stops</span>
+          <button aria-pressed="true" data-v="all">Any</button><button aria-pressed="false" data-v="0">Non-stop only</button></div>
+        <div class="filter" data-f="sort"><span class="label">Sort</span>
+          <button aria-pressed="true" data-v="price">Cheapest</button><button aria-pressed="false" data-v="mins">Quickest</button><button aria-pressed="false" data-v="dep">By date</button></div>
+      </div>
+      <p class="count" id="count"></p>
+      <ul class="lines" id="rows"></ul>
+    </section>
+
+    <section class="glass panel">
+      <p class="eyebrow">Your own dates</p>
+      <h2 class="display">Try another day</h2>
+      <p class="text">Damo's free from about 16 to 18 January through to 13 or 14 February, so there's room to move.</p>
+      <div class="fields">
+        <label class="field"><span class="label">From</span>
+          <select id="b-from"><option value="MEL">Melbourne</option><option value="BNE">Brisbane</option><option value="SYD">Sydney</option></select></label>
+        <label class="field"><span class="label">To</span>
+          <select id="b-to"><option value="Tokyo">Tokyo</option><option value="Osaka">Osaka</option><option value="PVG">Shanghai</option><option value="Beijing">Beijing</option></select></label>
+        <label class="field"><span class="label">Leave</span><input type="date" id="b-dep" value="2027-01-26" min="2026-10-12"></label>
+        <label class="field"><span class="label">Nights</span><input type="number" id="b-n" value="10" min="3" max="30" inputmode="numeric"></label>
+        <label class="check"><input type="checkbox" id="b-ns"> Non-stop only</label>
+      </div>
+      <a class="action" id="b-go" target="_blank" rel="noopener">Search Google Flights</a>
+      <p class="hint" id="b-note"></p>
+    </section>
+
+    <section class="glass panel">
+      <p class="eyebrow">Velocity points</p>
+      <h2 class="display">Only worth it in business</h2>
+      <p class="figure">82k<small>points one way, per person</small></p>
+      <p class="text">ANA non-stop from Sydney to Haneda, plus about $62 to $102 in tax. Economy is 45k, which is poor value against a $1,500 cash fare. Virgin no longer flies to Japan (Cairns to Haneda ended in Feb 2025), so it's Virgin to Sydney, then ANA.</p>
+      <ul class="lines">
+        <li>Book on the ANA flight number (NH), not the Virgin codeshare, or it costs more points.</li>
+        <li>Peak season, so saver seats are scarce. seats.aero Pro (about $13 a month) searches Velocity. A seat that shows on KrisFlyer can usually be booked with Velocity too.</li>
+        <li>Backup is Singapore Airlines via Singapore, roughly 50k in economy. Not confirmed.</li>
+      </ul>
+      <div class="actions">
+        <a class="action action--quiet" target="_blank" rel="noopener" href="https://seats.aero">seats.aero ↗</a>
+        <a class="action action--quiet" target="_blank" rel="noopener" id="ana-cash">ANA cash fare ↗</a>
+      </div>
+    </section>
+
+    <section class="glass panel">
+      <p class="eyebrow">Worth knowing</p>
+      <figure class="frame"><img src="assets/street.jpg" alt="A quiet Japanese street corner with a blue awning" loading="lazy"></figure>
+      <ul class="lines">
+        <li>Prices are Google Flights' lowest return fare on that route and date, per person in economy. A starting price, not a quote.</li>
+        <li>December runs about $200 to $300 cheaper per person if January falls over.</li>
+        <li>Osaka is always one stop from Brisbane or Melbourne. Tokyo is the easier way in.</li>
+        <li>Not searched: into Tokyo and home from Osaka on one ticket. Use Multi-city in Google Flights.</li>
+      </ul>
+    </section>
+
+    <footer class="sign"><span role="img" aria-label="Captain Nino"></span><p>Planned with Sail</p></footer>
+  </div>
+</main>
+
+<script>
+const D=[
+["BNE","Tokyo","2027-01-19",1649,"Jetstar",0,"",535,"10:20am","Narita"],
+["BNE","Tokyo","2027-01-19",1381,"Jetstar",1,"Cairns 2h45",750,"6:40am","Narita"],
+["BNE","Tokyo","2027-01-19",1658,"China Southern",1,"Guangzhou 2h50",935,"11:00pm","Haneda"],
+["BNE","Tokyo","2027-01-19",1697,"Philippine Airlines",1,"Manila 1h45",820,"11:35am","Haneda"],
+["BNE","Tokyo","2027-01-19",2076,"Cathay Pacific",1,"Hong Kong 55m",800,"12:50am","Narita","Tight 55 minute connection"],
+["BNE","Tokyo","2027-01-19",2561,"Qantas",0,"",550,"9:20am","Narita"],
+["BNE","Tokyo","2027-01-21",1551,"Jetstar",0,"",535,"10:20am","Narita"],
+["BNE","Tokyo","2027-01-21",1336,"Jetstar",1,"Cairns 2h45",750,"6:40am","Narita"],
+["BNE","Tokyo","2027-01-21",1664,"Korean Air",1,"Seoul 2h35",910,"","Tokyo"],
+["BNE","Tokyo","2027-01-21",1803,"Cathay Pacific",1,"Hong Kong 1h45",855,"","Tokyo"],
+["BNE","Tokyo","2027-01-21",2481,"Qantas",0,"",550,"9:20am","Narita"],
+["BNE","Tokyo","2027-01-26",1516,"Jetstar",0,"",535,"10:20am","Narita"],
+["BNE","Tokyo","2027-01-26",1439,"Korean Air",1,"Seoul 2h35",910,"","Tokyo"],
+["BNE","Tokyo","2027-01-26",1764,"Cathay Pacific",1,"Hong Kong 1h35",835,"","Tokyo"],
+["BNE","Tokyo","2027-01-26",2322,"Qantas",0,"",550,"9:20am","Narita"],
+["BNE","Osaka","2027-01-19",1660,"Jetstar",1,"Sydney 3h15",885,"6:10am","Kansai"],
+["BNE","Osaka","2027-01-19",1850,"Korean Air",1,"Seoul 2h50",900,"8:40am","Kansai"],
+["BNE","Osaka","2027-01-19",2080,"Cathay Pacific",1,"Hong Kong 1h",775,"12:50am","Kansai"],
+["BNE","Osaka","2027-01-21",1559,"Jetstar",1,"Sydney 3h15",885,"6:10am","Kansai"],
+["BNE","Osaka","2027-01-21",1562,"EVA Air",1,"Taipei 1h25",740,"","Kansai"],
+["BNE","Osaka","2027-01-21",1652,"Korean Air",1,"Seoul 2h50",900,"","Kansai"],
+["BNE","Osaka","2027-01-26",1370,"Jetstar",1,"Sydney 3h15",885,"6:10am","Kansai"],
+["BNE","Osaka","2027-01-26",1404,"China Airlines",1,"Taipei 2h20",805,"","Kansai"],
+["BNE","Osaka","2027-01-26",1443,"Korean Air",1,"Seoul 2h50",900,"","Kansai"],
+["BNE","Osaka","2027-01-26",1708,"Cathay Pacific",1,"Hong Kong 1h",775,"","Kansai"],
+["MEL","Tokyo","2027-01-19",1525,"Jetstar",1,"Cairns 3h15",835,"6:15am","Narita"],
+["MEL","Tokyo","2027-01-19",1688,"Philippine Airlines",1,"Manila 1h",795,"9:20am","Narita","Tight one hour connection"],
+["MEL","Tokyo","2027-01-19",1950,"THAI",1,"Bangkok 2h20",1040,"12:30am","Narita"],
+["MEL","Tokyo","2027-01-19",2565,"Qantas",0,"",620,"9:20am","Narita"],
+["MEL","Tokyo","2027-01-21",1463,"Jetstar",1,"Cairns 3h15",835,"6:15am","Narita"],
+["MEL","Tokyo","2027-01-21",1468,"Philippine Airlines",1,"Manila 1h",795,"9:20am","Narita","Tight one hour connection"],
+["MEL","Tokyo","2027-01-21",1401,"Cebu Pacific",1,"Manila 5h10",1090,"1:35am","Narita","Budget carrier"],
+["MEL","Tokyo","2027-01-21",1817,"Cathay Pacific",1,"Hong Kong 3h40",1020,"3:30pm","Narita"],
+["MEL","Tokyo","2027-01-21",2469,"Qantas",0,"",620,"9:20am","Narita"],
+["MEL","Tokyo","2027-01-26",1433,"Jetstar",1,"Cairns 3h15",835,"6:15am","Narita"],
+["MEL","Tokyo","2027-01-26",1255,"China Southern",1,"Guangzhou 2h15",950,"11:25pm","Narita"],
+["MEL","Tokyo","2027-01-26",1302,"Garuda Indonesia",1,"Jakarta 5h35",1195,"2:55pm","Haneda"],
+["MEL","Tokyo","2027-01-26",1669,"Cathay Pacific",1,"Hong Kong 1h30",865,"12:45am","Narita"],
+["MEL","Tokyo","2027-01-26",1721,"Singapore Airlines",1,"Singapore 2h50",1020,"12:35am","Haneda"],
+["MEL","Osaka","2027-01-19",1614,"Cathay Pacific",1,"Hong Kong 1h50",865,"8:40am","Kansai"],
+["MEL","Osaka","2027-01-19",1823,"Philippine Airlines",1,"Manila 1h",765,"9:20am","Kansai","Tight one hour connection"],
+["MEL","Osaka","2027-01-19",1562,"Cebu Pacific",1,"Manila 6h10",1125,"1:35am","Kansai","Budget carrier"],
+["BNE","Tokyo","2026-12-01",1306,"Jetstar",0,"",535,"10:20am","Narita"],
+["BNE","Tokyo","2026-12-01",1849,"Qantas and JAL",1,"Sydney 1h50",790,"5:00am","Haneda"],
+["BNE","Tokyo","2026-12-01",2204,"Qantas",0,"",550,"9:20am","Narita"],
+["BNE","Tokyo","2026-12-08",1279,"Jetstar",0,"",535,"10:20am","Narita"],
+["BNE","Tokyo","2026-12-08",1795,"Qantas and JAL",1,"Sydney 1h50",790,"5:00am","Haneda"],
+["BNE","Tokyo","2026-12-08",2049,"Qantas",0,"",550,"9:20am","Narita"],
+["MEL","Tokyo","2026-12-08",1192,"Jetstar",1,"Cairns 3h15",835,"6:15am","Narita"],
+["MEL","Tokyo","2026-12-08",2103,"Qantas",0,"",620,"9:20am","Narita"],
+["MEL","Tokyo","2026-12-08",2111,"JAL",0,"",600,"7:20am","Narita"],
+["MEL","Tokyo","2026-12-08",1571,"China Southern",1,"Guangzhou 2h55",970,"11:25pm","Haneda"],
+["MEL","Osaka","2026-12-08",1589,"Jetstar",1,"Sydney 2h20",820,"8:15am","Kansai"],
+["MEL","Osaka","2026-12-08",1575,"China Southern",1,"Guangzhou 3h45",1005,"11:25pm","Kansai"],
+["MEL","Osaka","2026-12-08",1788,"Philippine Airlines",1,"Manila 1h",765,"9:20am","Kansai","Tight one hour connection"],
+["BNE","Tokyo","2027-03-16",1265,"Jetstar",0,"",535,"10:20am","Narita"],
+["BNE","Tokyo","2027-03-16",1547,"China Airlines",1,"Taipei 3h45",920,"11:10pm","Narita"],
+["MEL","Tokyo","2027-03-16",1050,"Jetstar",1,"Cairns 3h15",835,"6:15am","Narita"],
+["MEL","Tokyo","2027-03-16",1446,"Cathay Pacific",1,"Hong Kong 2h20",920,"12:45am","Narita"],
+["MEL","Tokyo","2027-03-16",2230,"Qantas",0,"",620,"9:20am","Narita"],
+["BNE","Tokyo","2027-05-18",1108,"Jetstar",0,"",550,"9:30am","Narita"],
+["BNE","Tokyo","2027-05-18",1223,"China Airlines",1,"Taipei 3h10",925,"10:50pm","Narita"],
+["BNE","Tokyo","2027-05-18",1232,"Korean Air",1,"Seoul 2h55",910,"8:40am","Haneda"],
+["MEL","Tokyo","2027-05-18",1297,"Cathay Pacific",1,"Hong Kong 2h10",945,"11:45pm","Narita"],
+["MEL","Tokyo","2027-05-18",1968,"Qantas",0,"",625,"9:35am","Narita"],
+["BNE","Tokyo","2027-06-08",1006,"Jetstar",0,"",550,"9:30am","Narita"],
+["BNE","Tokyo","2027-06-08",1223,"China Airlines",1,"Taipei 3h10",925,"10:50pm","Narita"],
+["MEL","Tokyo","2027-06-08",1173,"Philippine Airlines",1,"Manila 1h15",800,"8:00am","Narita","Tight connection"],
+["MEL","Tokyo","2027-06-08",1579,"Qantas",0,"",625,"9:35am","Narita"],
+["BNE","Shanghai","2027-01-26",1261,"China Southern",1,"Guangzhou 1h45",790,"10:10am","Pudong","Chinese New Year travel rush"],
+["BNE","Shanghai","2027-01-26",1287,"Singapore Airlines",1,"Singapore 2h15",920,"11:25pm","Pudong","Chinese New Year travel rush"],
+["BNE","Shanghai","2027-01-26",1425,"Cathay Pacific",1,"Hong Kong 1h35",765,"12:50am","Pudong","Chinese New Year travel rush"],
+["MEL","Shanghai","2027-01-26",1077,"China Southern",1,"Guangzhou 3h55",940,"8:40am","Pudong","Chinese New Year travel rush"],
+["MEL","Shanghai","2027-01-26",1300,"Cathay Pacific",1,"Hong Kong 2h10",830,"12:45am","Pudong","Chinese New Year travel rush"],
+["BNE","Shanghai","2027-05-18",878,"China Southern",1,"Guangzhou 2h10",850,"10:10am","Hongqiao"],
+["BNE","Shanghai","2027-05-18",949,"Malaysia Airlines",1,"Kuala Lumpur 2h10",970,"12:05am","Pudong"],
+["BNE","Shanghai","2027-05-18",1054,"Cathay Pacific",1,"Hong Kong 1h20",780,"12:05am","Pudong"],
+["MEL","Shanghai","2027-05-18",1003,"Cathay Pacific",1,"Hong Kong 2h30",890,"7:25am","Pudong"],
+["MEL","Shanghai","2027-05-18",1065,"Malaysia Airlines",1,"Kuala Lumpur 2h45",1005,"11:30pm","Pudong"]
+].map(r=>({who:r[0],dest:r[1],dep:r[2],price:r[3],air:r[4],stops:r[5],via:r[6],mins:r[7],t:r[8],ap:r[9],note:r[10]||""}));
+
+const ORIG={BNE:"BNE",MEL:"MEL",SYD:"SYD"};
+const NAME={BNE:"Jacob",MEL:"Damo"};
+const CITY={BNE:"Brisbane",MEL:"Melbourne"};
+const addDays=(iso,n)=>{const d=new Date(iso+"T00:00:00Z");d.setUTCDate(d.getUTCDate()+n);return d.toISOString().slice(0,10)};
+const gf=(from,to,dep,ret,ns)=>"https://www.google.com/travel/flights?q="+encodeURIComponent(`${ns?"Nonstop flights":"Flights"} from ${from} to ${to} on ${dep} through ${ret}`)+"&curr=AUD&hl=en-AU&gl=AU";
+const fmt=iso=>new Date(iso+"T00:00:00Z").toLocaleDateString("en-AU",{weekday:"short",day:"numeric",month:"short",timeZone:"UTC"});
+const hm=m=>Math.floor(m/60)+"h"+(m%60?" "+(m%60)+"m":"");
+
+const F={who:"all",month:"Jan",dest:"all",stops:"all",sort:"price"};
+document.querySelectorAll(".filter").forEach(g=>g.addEventListener("click",e=>{
+  const b=e.target.closest("button");if(!b)return;
+  g.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));
+  F[g.dataset.f]=b.dataset.v;render();
+}));
+
+function render(){
+  const rows=D.filter(r=>(F.who==="all"||r.who===F.who)&&(F.dest==="all"||r.dest===F.dest)
+    &&(F.month==="all"||(F.month==="Jan"?r.dep.startsWith("2027-01"):F.month==="Dec"?r.dep.startsWith("2026"):r.dep>"2027-02"))
+    &&(F.stops==="all"||r.stops===0))
+    .sort((a,b)=>(a[F.sort]>b[F.sort]?1:a[F.sort]<b[F.sort]?-1:a.price-b.price));
+  document.getElementById("count").textContent=rows.length?`${rows.length} flights`:"";
+  const ul=document.getElementById("rows");
+  if(!rows.length){ul.innerHTML='<li class="text">Nothing matches. Loosen a filter.</li>';return}
+  ul.innerHTML=rows.map(r=>{
+    const ret=addDays(r.dep,10);
+    return `<li class="flight">
+      <span class="flight__price">$${r.price.toLocaleString()}</span>
+      <div class="flight__main">
+        <div class="flight__line"><b>${NAME[r.who]}</b> · ${CITY[r.who]} to ${r.dest} · ${r.air}</div>
+        <div class="flight__sub">${fmt(r.dep)} to ${fmt(ret)} · ${r.stops?"via "+r.via:"Non-stop"} · ${hm(r.mins)}${r.t?" · leaves "+r.t:""} · ${r.ap}</div>
+        ${r.note?`<div class="flight__note">${r.note}</div>`:""}
+      </div>
+      <a class="open" target="_blank" rel="noopener" href="${gf(ORIG[r.who],r.dest,r.dep,ret,r.stops===0)}">Open ↗</a>
+    </li>`}).join("");
+}
+render();
+
+function build(){
+  const from=document.getElementById("b-from").value,to=document.getElementById("b-to").value,
+    dep=document.getElementById("b-dep").value,n=+document.getElementById("b-n").value||10,
+    ns=document.getElementById("b-ns").checked;
+  if(!dep)return;
+  const ret=addDays(dep,n);
+  document.getElementById("b-go").href=gf(ORIG[from],to,dep,ret,ns);
+  document.getElementById("b-note").textContent=`${fmt(dep)} to ${fmt(ret)}, ${n} nights.`;
+}
+["b-from","b-to","b-dep","b-n","b-ns"].forEach(id=>document.getElementById(id).addEventListener("input",build));
+build();
+document.getElementById("ana-cash").href=gf("SYD","HND","2027-01-26","2027-02-05",true);
+</script>
+</body>
+</html>
