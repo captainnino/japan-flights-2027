@@ -50,7 +50,7 @@ a{color:inherit}
 
 .page{position:relative;z-index:1}
 .hero{position:relative;display:flex;align-items:flex-end;min-height:82svh;max-width:760px;margin:0 auto;padding:calc(var(--safe-top) + 64px) var(--gutter) 44px}
-.top::before{content:"";position:absolute;top:calc(var(--safe-top) + 22px);left:var(--gutter);width:22px;height:22px;background-color:var(--ink);
+.hero::before{content:"";position:absolute;top:calc(var(--safe-top) + 22px);left:var(--gutter);width:22px;height:22px;background-color:var(--ink);
   -webkit-mask:url("assets/brand/monogram-cn.svg") center/contain no-repeat;mask:url("assets/brand/monogram-cn.svg") center/contain no-repeat;filter:drop-shadow(0 1px 2px rgb(14 16 13 / .5))}
 .hero__text{width:100%;text-shadow:0 1px 2px rgb(14 16 13 / .5),0 0 28px rgb(14 16 13 / .35)}
 .hero .eyebrow{color:var(--ink)}
@@ -119,23 +119,25 @@ a{color:inherit}
 .figure small{font-family:var(--font-ui);font-size:13px;color:var(--ink-3);letter-spacing:.01em;margin-left:8px}
 
 /* The best picks, first thing on the page. */
-.top{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:calc(var(--safe-top) + 62px) var(--gutter) 0}
-.best{padding:20px 22px 18px}
-.best__head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
-.best__total{font-family:var(--font-display);font-size:30px;line-height:1;letter-spacing:.01em}
-.best__total small{font-family:var(--font-ui);font-size:12px;color:var(--ink-3);margin-left:6px;letter-spacing:.01em}
-.best .filter{margin-top:12px}
-.pair{display:grid;grid-template-columns:1fr 1fr;gap:0 22px;margin-top:14px;border-top:1px solid var(--hairline)}
-.pick{padding:14px 0 4px;min-width:0}
+/* The best picks: the first panel, straight under the title. */
+.best__head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
+.best__head .display{margin-top:10px}
+.best__total{margin:0;font-family:var(--font-display);font-size:40px;line-height:1;letter-spacing:.01em;text-align:right}
+.best__total small{display:block;font-family:var(--font-ui);font-size:12px;color:var(--ink-3);letter-spacing:.01em;margin-top:4px}
+.best__basis{margin:12px 0 0;font-size:13px;color:var(--ink-3)}
+.best .filter{margin-top:18px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:0 22px;margin-top:14px;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+.pick{padding:16px 0;min-width:0}
 .pick + .pick{border-left:1px solid var(--hairline);padding-left:22px}
 .pick__who{font-size:12px;color:var(--ink-3)}
-.pick__price{font-family:var(--font-display);font-size:44px;line-height:1;margin:4px 0 6px;letter-spacing:.01em}
+.pick__price{font-family:var(--font-display);font-size:48px;line-height:1;margin:6px 0 2px;letter-spacing:.01em}
+.pick__bag{font-size:12px;color:var(--cn-sand);margin-bottom:8px}
 .pick__what{font-size:14px;font-weight:500}
 .pick__how{font-size:13px;color:var(--ink-3);margin-top:2px}
-.pick .open{display:inline-block;margin-top:10px}
-.best__note{margin:12px 0 0;font-size:13px;color:var(--ink-2)}
-@media (max-width:520px){.pair{grid-template-columns:1fr}.pick + .pick{border-left:0;padding-left:0;border-top:1px solid var(--hairline)}}
-.hero{min-height:62svh}
+.pick .open{display:inline-block;margin-top:12px}
+.best__note{margin:14px 0 0;font-size:14px;color:var(--ink-2)}
+@media (max-width:520px){.pair{grid-template-columns:1fr}.pick + .pick{border-left:0;padding-left:0;border-top:1px solid var(--hairline)}.best__total{text-align:left}}
+.hero{min-height:58svh;padding-bottom:28px}
 
 .sign{display:flex;flex-direction:column;align-items:center;gap:10px;padding:34px 0 10px}
 .sign span{display:block;width:150px;height:30px;background-color:var(--ink-2);-webkit-mask:url("assets/brand/wordmark.svg") center/contain no-repeat;mask:url("assets/brand/wordmark.svg") center/contain no-repeat}
@@ -146,27 +148,28 @@ a{color:inherit}
 <div class="backdrop" aria-hidden="true"><img src="assets/pagoda.jpg" alt=""><div class="backdrop__veil"></div></div>
 
 <main class="page">
-  <div class="top">
-    <section class="glass best" aria-label="Best flights for both of us">
-      <div class="best__head">
-        <p class="eyebrow">Best flights for both of us</p>
-        <p class="best__total" id="best-total"></p>
-      </div>
-      <div class="filter" id="best-tabs"></div>
-      <div class="pair" id="best-pair"></div>
-      <p class="best__note" id="best-note"></p>
-    </section>
-  </div>
   <header class="hero">
     <div class="hero__text">
       <p class="eyebrow">For Jacob and Damo</p>
       <h1 class="hero__island">Japan</h1>
-      <p class="hero__project">Ten days in Tokyo or Osaka. Late January 2027 first, later in the year if that suits, with Shanghai and a South Island hiking trip as the alternatives.</p>
-      <p class="hero__meta">Jacob from Brisbane, Damo from Melbourne. Prices from Google Flights on 11 Oct 2026, return economy per person in AUD. They will move.</p>
+      <p class="hero__project">Ten days in Tokyo or Osaka, with Shanghai and a South Island hiking trip as the alternatives.</p>
     </div>
   </header>
 
   <div class="sections">
+    <section class="glass panel best" aria-label="Best flights for both of us">
+      <div class="best__head">
+        <div>
+          <p class="eyebrow">Best flights for both of us</p>
+          <h2 class="display">The pick</h2>
+        </div>
+        <p class="best__total" id="best-total"></p>
+      </div>
+      <p class="best__basis">Return flights, economy, per person, in AUD. Google Flights prices from 11 Oct 2026, so they will move.</p>
+      <div class="filter" id="best-tabs"></div>
+      <div class="pair" id="best-pair"></div>
+      <p class="best__note" id="best-note"></p>
+    </section>
 
     <section class="glass panel">
       <p class="eyebrow">The short version</p>
@@ -490,14 +493,14 @@ build();
 document.getElementById("ana-cash").href=gf("SYD","HND","2027-01-26","2027-02-05",true);
 const owUrl=(from,to,dep)=>"https://www.google.com/travel/flights?q="+encodeURIComponent(`One way flights from ${from} to ${to} on ${dep}`)+"&curr=AUD&hl=en-AU&gl=AU";
 const BEST=[
-  {tab:"Japan, Jan",total:2949,note:"Tue 26 Jan to Fri 5 Feb. Bags extra on Jetstar.",
-   j:{price:1516,what:"Jetstar non-stop to Tokyo Narita",how:"8h 55m · leaves 10:20am",url:gf("BNE","Tokyo","2027-01-26","2027-02-05",true)},
-   d:{price:1433,what:"Jetstar via Cairns to Tokyo Narita",how:"13h 55m · leaves 6:15am · 3h in Cairns",url:gf("MEL","Tokyo","2027-01-26","2027-02-05",false)}},
+  {tab:"Japan, Jan",total:2949,note:"Tue 26 Jan to Fri 5 Feb. Jetstar fares don't include a checked bag; the bag range is an estimate, so check the price when you book.",
+   j:{price:1516,bag:1,what:"Jetstar non-stop to Tokyo Narita",how:"8h 55m · leaves 10:20am",url:gf("BNE","Tokyo","2027-01-26","2027-02-05",true)},
+   d:{price:1433,bag:1,what:"Jetstar via Cairns to Tokyo Narita",how:"13h 55m · leaves 6:15am · 3h in Cairns",url:gf("MEL","Tokyo","2027-01-26","2027-02-05",false)}},
   {tab:"Tokyo in, Osaka out",total:3090,note:"Two one way tickets each. You fly home together on Jetstar's Osaka to Brisbane non-stop, then Damo takes Virgin to Melbourne on points.",
-   j:{price:1599,what:"Jetstar non-stop both ways",how:"Into Narita 26 Jan, home from Kansai 5 Feb",url:owUrl("BNE","Tokyo","2027-01-26")},
-   d:{price:1491,what:"Jetstar via Cairns, home via Brisbane",how:"Plus Velocity points for Brisbane to Melbourne",url:owUrl("MEL","Tokyo","2027-01-26")}},
+   j:{price:1599,bag:1,what:"Jetstar non-stop both ways",how:"Into Narita 26 Jan, home from Kansai 5 Feb",url:owUrl("BNE","Tokyo","2027-01-26")},
+   d:{price:1491,bag:1,what:"Jetstar via Cairns, home via Brisbane",how:"Plus Velocity points for Brisbane to Melbourne",url:owUrl("MEL","Tokyo","2027-01-26")}},
   {tab:"Japan, May",total:2405,note:"Tue 18 to Fri 28 May. Best weather of the year, after Golden Week.",
-   j:{price:1108,what:"Jetstar non-stop to Tokyo Narita",how:"9h 10m · leaves 9:30am",url:gf("BNE","Tokyo","2027-05-18","2027-05-28",true)},
+   j:{price:1108,bag:1,what:"Jetstar non-stop to Tokyo Narita",how:"9h 10m · leaves 9:30am",url:gf("BNE","Tokyo","2027-05-18","2027-05-28",true)},
    d:{price:1297,what:"Cathay Pacific via Hong Kong",how:"15h 45m · leaves 11:45pm",url:gf("MEL","Tokyo","2027-05-18","2027-05-28",false)}},
   {tab:"Shanghai, May",total:1881,note:"Tue 18 to Fri 28 May. Visa free entry is only confirmed to 31 Dec 2026, so check before booking.",
    j:{price:878,what:"China Southern via Guangzhou",how:"14h 10m · leaves 10:10am",url:gf("BNE","PVG","2027-05-18","2027-05-28",false)},
@@ -511,8 +514,8 @@ tabs.innerHTML=BEST.map((b,i)=>`<button aria-pressed="${i===0}" data-i="${i}">${
 function showBest(i){
   const b=BEST[i];
   tabs.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x.dataset.i==i));
-  document.getElementById("best-total").innerHTML=`$${b.total.toLocaleString()}<small>for both</small>`;
-  const pick=(who,city,p)=>`<div class="pick"><div class="pick__who">${who} · from ${city}</div><div class="pick__price">$${p.price.toLocaleString()}</div><div class="pick__what">${p.what}</div><div class="pick__how">${p.how}</div><a class="open" target="_blank" rel="noopener" href="${p.url}">Open flight ↗</a></div>`;
+  document.getElementById("best-total").innerHTML=`$${b.total.toLocaleString()}<small>${b.j.bag||b.d.bag?"for both, before bags":"for both"}</small>`;
+  const pick=(who,city,p)=>`<div class="pick"><div class="pick__who">${who} · from ${city}</div><div class="pick__price">$${p.price.toLocaleString()}</div>${p.bag?`<div class="pick__bag">About $${(Math.round((p.price+100)/10)*10).toLocaleString()} to $${(Math.round((p.price+200)/10)*10).toLocaleString()} with a checked bag</div>`:'<div class="pick__bag">&nbsp;</div>'}<div class="pick__what">${p.what}</div><div class="pick__how">${p.how}</div><a class="open" target="_blank" rel="noopener" href="${p.url}">Open flight ↗</a></div>`;
   document.getElementById("best-pair").innerHTML=pick("Jacob","Brisbane",b.j)+pick("Damo","Melbourne",b.d);
   document.getElementById("best-note").textContent=b.note;
 }
